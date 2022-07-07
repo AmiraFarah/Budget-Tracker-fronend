@@ -17,22 +17,14 @@ const CreateTransaction = () => {
         })()
     }, [])
     //==========================================================
-    // const [balance, setBalance]= useState([])
-    
-    // useEffect(() => {
-    //     (async () => {
-    //         const curr = await userOmg()
-    //         setBalance(curr.data.balance)
-    //     })()
-    // }, [])
-    //  console.log('bbbbmmmmmbalance from use effect',balance) 
+   
     const [newTransaction, setNewTrans]= useState({ 
        trans_name :'' ,
        amount :'',
        trans_type:'',
        userId : id
     })
-   
+    const navigate = useNavigate()
      const handleChange = (e)=>{
         setNewTrans({
             ...newTransaction,
@@ -60,13 +52,14 @@ let newExpences=userr.expences
          }
          newB = newIncome - newExpences
          userService.updateUserBalance(newB,newIncome,newExpences)
-         
+
+// ineed something code to update the user balance before vavigate to trans
+//====================================
          navigate('/transactions')
 
     }
     
     
-    const navigate = useNavigate()
 
     return (
         <form className="row g-3" onSubmit={handleSubmit}>

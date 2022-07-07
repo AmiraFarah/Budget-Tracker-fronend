@@ -67,7 +67,7 @@ export const userOmg = async ()=>{
       newUser.income = income
       newUser.expences=expences
       const res  = await axios.put(BASE_URL+'/'+id,newUser)
-      console.log(res.data, ' new user with new info ')
+      // console.log(res.data, ' new user with new info ')
 
        return res
       
