@@ -1,7 +1,23 @@
 .App{
   display: flex;
+  
   background-color: cornsilk;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   height:100vh;
+}
+.routes{
+  align-self: center;
+}
+.nav{
+ align-items: center;
+  width : 50%;
+}
+.history{
+  align-items: center;
+}
+.col-8{
+  width :30rem;
+  background-color: navy;
+  height: 40rem;
+  color: white;
 }

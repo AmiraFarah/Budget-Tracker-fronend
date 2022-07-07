@@ -1,25 +1,39 @@
 import './createTransaction.css'
-import {useState} from 'react'
+import { useState, useEffect } from 'react'
 import * as transService from '../../utilities/transactions-service'
 import * as userService from '../../utilities/users-service'
 import { useNavigate } from 'react-router-dom'
+import { userOmg } from '../../utilities/users-service'
 
 let id = userService.getUserId()
-// import * as transactionsService from '../../utilities/transactions-service'
 
 const CreateTransaction = () => {
-
+    const [userr, setUser]= useState({})
+    
+    useEffect(() => {
+        (async () => {
+            const userN = await userOmg()
+            setUser(userN.data)
+        })()
+    }, [])
+    //==========================================================
+    // const [balance, setBalance]= useState([])
+    
+    // useEffect(() => {
+    //     (async () => {
+    //         const curr = await userOmg()
+    //         setBalance(curr.data.balance)
+    //     })()
+    // }, [])
+    //  console.log('bbbbmmmmmbalance from use effect',balance) 
     const [newTransaction, setNewTrans]= useState({ 
        trans_name :'' ,
-       amount :0,
+       amount :'',
        trans_type:'',
        userId : id
-
     })
-
-const navigate = useNavigate()
-
-    const handleChange = (e)=>{
+   
+     const handleChange = (e)=>{
         setNewTrans({
             ...newTransaction,
             [e.target.name]: e.target.value
@@ -28,22 +42,37 @@ const navigate = useNavigate()
    const handle =(e)=>{
 const d=e.target.value
 newTransaction.trans_type=d
+
 }
-// console.log(newTransaction,'new')
 
     const handleSubmit=(e)=>{
         e.preventDefault()
         transService.createTransaction(newTransaction)
-        navigate('/transactions')
+
+let newB=userr.balance
+let newIncome=userr.income
+let newExpences=userr.expences
+         if (newTransaction.trans_type==='deposit'){
+            newIncome=(newTransaction.amount  *1 + userr.income * 1)
+         }
+         if (newTransaction.trans_type === 'withdrawl'){
+            newExpences = (userr.expences*1 + newTransaction.amount *1)
+         }
+         newB = newIncome - newExpences
+         userService.updateUserBalance(newB,newIncome,newExpences)
+         
+         navigate('/transactions')
 
     }
-    // console.log(newTransaction)
+    
+    
+    const navigate = useNavigate()
 
     return (
         <form className="row g-3" onSubmit={handleSubmit}>
 
 
-            <div className="col-6">
+            <div className="col-8">
                 <label htmlFor="trans_name" className="form-label">transaction name</label>
                 <input 
                     type="text"
@@ -69,12 +98,13 @@ newTransaction.trans_type=d
                     <option  name='trans_type'  value='deposit' >deposit</option>
                     <option  name='trans_type' value='withdrawl'>withdrawl</option>
                 </select>
+                <button type="submit" className="btn btn-danger" >add</button>
+<h3>balance = {userr.balance}</h3>
+<h3>Total Income = {userr.income}</h3>
+<h3>Total expences = {userr.expences}</h3>
             </div>
 
 
-            <div className="col-12">
-                <button type="submit" className="btn btn-primary" >add</button>
-            </div>
         </form>
       
     );

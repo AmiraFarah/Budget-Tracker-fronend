@@ -8,7 +8,7 @@ const Nav = ({ user , setUser , logOut}) => {
     logOut()
   }
   return (
-    <div>{
+    <div className='nav-div'>{
       !user ?
         <ul className="nav">
           <li className="nav-item">

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { getToken } from './users-service'
 import * as userService from './users-service'
-import { useNavigate } from 'react-router-dom'
+//import { useNavigate } from 'react-router-dom'
 
 const BASE_URL = 'http://localhost:9090/api/v1/transactions'
 
@@ -27,6 +27,8 @@ export const getTransactions = async () => {
 
 export const createTransaction = async (newTransaction) => {
   try {
+  //  handleBalance(newTransaction)
+
          const createdTransaction = await axios.post(BASE_URL+`/${id}`,newTransaction, setOptions())
          return createdTransaction
         } catch (e) {
@@ -52,3 +54,5 @@ export const deleteTransaction = async (id)=>{
   }
 
 }
+ 
+

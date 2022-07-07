@@ -1,5 +1,4 @@
- import axios from 'axios'
-
+import axios from 'axios'
  const BASE_URL = 'http://localhost:9090/api/v1/users'
  export const login = async credentials =>{
  try {
@@ -31,7 +30,8 @@
 
 export const getUser =()=>{
    const token = getToken()
-   return  token ? JSON.parse(atob(token.split('.')[1])).user : null
+
+   return   JSON.parse(atob(token.split('.')[1])).user 
 }
 export const getUserId = ()=>{
    const token = getToken()
@@ -40,8 +40,49 @@ export const getUserId = ()=>{
 
 }
 
+const id = getUserId()
+
 export const logOut = ()=>{
    localStorage.removeItem('token')
    
 }
 
+export const userOmg = async ()=>{
+   try {
+      const res = await axios.get(BASE_URL+'/'+id)
+      return res
+
+   } catch (e) {
+      console.log(e)
+      
+   }
+}
+
+
+ export const updateUserBalance = async (newB, income , expences)=>{
+    try {
+      // console.log(newB,'in user update')
+     let newUser = userOmg()
+      newUser.balance = newB
+      newUser.income = income
+      newUser.expences=expences
+      const res  = await axios.put(BASE_URL+'/'+id,newUser)
+      console.log(res.data, ' new user with new info ')
+
+       return res
+      
+ 
+    } catch (e) {
+     console.log(e)
+       }
+ }
+//  export const getBalance =async()=>{
+//    try {
+//       const myUser= await axios.get(BASE_URL+'/'+id)
+//      console.log(myUser.data.balance,'balance')
+//       // return myUser.data
+
+//    } catch (e) {
+//      console.log(e) 
+//    }
+//  }

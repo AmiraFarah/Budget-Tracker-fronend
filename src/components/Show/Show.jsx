@@ -5,13 +5,13 @@ const Show = () => {
     const location = useLocation()
    const  transDetails = location.state
     return (
-        <div>
-            <p>{transDetails.trans_type}</p>
-            <p>{transDetails.trans_name}</p>
-            <p>{transDetails.amount}$</p>
+        <div className='show'>
+            <p>Trans Type  {transDetails.trans_type}</p>
+            <p>Trans Name {transDetails.trans_name}</p>
+            <p> Amount  {transDetails.amount}$</p>
             <button 
                 className="btn btn-success" 
-                onClick={()=> navigate(`/transactions`)}> back to transactions
+                onClick={()=> navigate(`/transactions`)}> back 
             </button>
 
         </div>
