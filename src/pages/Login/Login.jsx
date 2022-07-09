@@ -37,8 +37,8 @@ try {
 
 
         <div id='form'>
-            <form className='mx-auto w-25 border p-4' onSubmit={handleSubmit}>
-                <div className="mb-3">
+            <form className='mx-auto w-20 border p-6' onSubmit={handleSubmit}>
+                <div className="mb-2">
                     <label htmlFor="validationDefaultEmail" className="form-label">Email</label>
                     <input
                         type="email"
@@ -65,7 +65,10 @@ try {
                     />
                 </div>
 
-                <button type="submit" className="btn btn-primary">Submit</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <button type="submit" className="btn btn-primary ">  Submit</button>
             </form>
         </div>
 

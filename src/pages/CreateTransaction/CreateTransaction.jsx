@@ -92,9 +92,9 @@ let newExpences=userr.expences
                     <option  name='trans_type' value='withdrawl'>withdrawl</option>
                 </select>
                 <button type="submit" className="btn btn-danger" >add</button>
-<h3>balance = {userr.balance}</h3>
-<h3>Total Income = {userr.income}</h3>
-<h3>Total expences = {userr.expences}</h3>
+<h3>balance = {userr.balance} $</h3>
+<h3>Total Income = {userr.income} $</h3>
+<h3>Total expences = {userr.expences}$</h3>
             </div>
 
 

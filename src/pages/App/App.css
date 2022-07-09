@@ -1,8 +1,10 @@
+.body{
+  display: flex;
+}
 .App{
   display: flex;
   
-  background-color: cornsilk;
-  justify-content: space-around;
+  justify-content: space-evenly;
   height:100vh;
 }
 .routes{
@@ -12,12 +14,113 @@
  align-items: center;
   width : 50%;
 }
+.main{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mb-2{
+  padding-left:20%;
+}
+.mb-3{
+  padding-left:20%;
+
+}
+.h1{
+  margin: 5%;
+  margin-top : 2%;
+}
 .history{
   align-items: center;
+  justify-content: space-between;
 }
 .col-8{
   width :30rem;
-  background-color: navy;
+  background-color: rgb(58, 58, 159);
   height: 40rem;
   color: white;
+}
+.trans{
+  width: 10rem;
+  background-color: rgb(58, 58, 159);
+  text-align: center;
+  height: fit-content;
+  color :white;
+}
+.show{
+  height: 30%;
+  width : 30%;
+  background-color: rgb(58, 58, 159);
+  color: white;
+  border: 1rem;
+  align-items: center;
+  text-align: center;
+}
+.red{
+  color:red;
+ 
+}
+.form-label{
+  padding-left:1%;
+  padding-top:2%
+}
+ .chart .title{
+  position :absolute;
+  left : 90;
+  right :90;
+  top:30%;
+  margin-left:6%;
+  margin-right:auto;
+ } 
+ .graph{
+  width : auto;
+  height : auto;
+  padding-right : 40%;
+ }
+#form{
+  width:30%;
+  background-color:rgb(58, 58, 159);
+  height : 40%;
+  color:white;
+}
+.delete{
+  color :white;
+  border: 1px;
+  border-color: bisque;
+  background-color: rgb(58, 58, 159);
+  width:30%;;
+  padding-top: 8%;
+  height :50%;
+  padding-left:5%;
+}
+.balance{
+
+width:fit-content;
+background-color: rgb(255,215,0);
+}
+.expences{
+  width:fit-content;
+background-color: rgb(220,20,60);
+}
+.income{
+  width:fit-content;
+  background-color: rgb(75,0,130);
+}
+.img{
+height: 30%;
+  width:30%;
+  height:min-content;
+  margin-right: 60%;
+}
+ul{
+  list-style: none;
+  display: flex;
+}
+.nav-item{
+  list-style: none;
+}
+.nav-link{
+
+color:rgb(75,0,130);
+font-size: larger;
 }

@@ -6,9 +6,16 @@ const Show = () => {
    const  transDetails = location.state
     return (
         <div className='show'>
-            <p>Trans Type  {transDetails.trans_type}</p>
-            <p>Trans Name {transDetails.trans_name}</p>
-            <p> Amount  {transDetails.amount}$</p>
+            <p></p>
+            <p></p>
+            <h5>  {transDetails.trans_type}</h5>
+            <p></p>
+            <hr />
+            <h5> {transDetails.trans_name}</h5>
+            <p></p>
+<hr />            <h5>   {transDetails.amount}$</h5>
+           <hr />
+           <p>created on {transDetails.date}</p>
             <button 
                 className="btn btn-success" 
                 onClick={()=> navigate(`/transactions`)}> back 

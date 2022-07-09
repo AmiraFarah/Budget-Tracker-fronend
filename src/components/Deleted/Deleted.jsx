@@ -60,9 +60,10 @@ const Deleted = (state) => {
 
     }
     return (
-        <div>
-            <h3> you are about to delete a transaction</h3>
-            <button className="btn btn-success" onClick={() => navigate("/transactions")}>back to transactions</button>
+        <div className="delete">
+            <h3> You are about to Delete</h3>
+           <h3 className="red"> &nbsp;&nbsp;&nbsp;&nbsp; A transaction</h3>
+            <button className="btn btn-primary" onClick={() => navigate("/transactions")}>back to transactions</button>
             <button className="btn btn-danger" onClick={handleDelete}> delete</button>
         </div>
     );
