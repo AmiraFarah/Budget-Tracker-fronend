@@ -7,30 +7,31 @@ const BASE_URL = 'http://localhost:9090/api/v1/transactions'
 
 const setOptions =()=>{
   return { headers: {
-    Authorization: `Bearer ${getToken()}`,
+    'Authorization': `Bearer ${getToken()}`,
     'Content-Type': 'application/json'
   }
 }}
-let id = userService.getUserId() //user id to append with URL
+ let iid = userService.getUserId() //user id to append with URL
 
 
-export const getTransactions = async () => {
+export const getTransactions = async (i) => {
 
   try {
-    const response = await axios.get(BASE_URL + `/${id}`, setOptions())
-    // console.log(response,'res')  
+
+    const response = await axios.get(BASE_URL + `/${iid}`, setOptions())
+     if (response.status===200 ){ 
     return response;
+     }
+     else return ('no data available  yet')
   } catch (e) {
-    console.log(e)
+    console.log(e,'errrrrror')
   }
 }
 
 export const createTransaction = async (newTransaction) => {
   try {
-  //  handleBalance(newTransaction)
-
-         const createdTransaction = await axios.post(BASE_URL+`/${id}`,newTransaction, setOptions())
-         return createdTransaction
+         const createdTransaction = await axios.post(BASE_URL+`/${newTransaction.userId}`,newTransaction, setOptions())
+        return createdTransaction
         } catch (e) {
 console.log(e)
   }
@@ -38,7 +39,7 @@ console.log(e)
 
 export const updateTransaction = async (transaction_details)=>{
   try {
-    const updatedTransaction= await axios.put(BASE_URL+`/${id}`, transaction_details, setOptions())
+    const updatedTransaction= await axios.put(BASE_URL, transaction_details, setOptions())
     return updatedTransaction
 
   } catch (e) {

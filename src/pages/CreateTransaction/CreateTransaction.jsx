@@ -14,10 +14,10 @@ const CreateTransaction = () => {
         (async () => {
             const userN = await userOmg()
             setUser(userN.data)
+            // console.log(userr,'user at first')
         })()
     }, [])
     //==========================================================
-   
     const [newTransaction, setNewTrans]= useState({ 
        trans_name :'' ,
        amount :'',
@@ -34,13 +34,10 @@ const CreateTransaction = () => {
    const handle =(e)=>{
 const d=e.target.value
 newTransaction.trans_type=d
-
 }
-
     const handleSubmit=(e)=>{
-        e.preventDefault()
+        // e.preventDefault()
         transService.createTransaction(newTransaction)
-
 let newB=userr.balance
 let newIncome=userr.income
 let newExpences=userr.expences
@@ -52,19 +49,14 @@ let newExpences=userr.expences
          }
          newB = newIncome - newExpences
          userService.updateUserBalance(newB,newIncome,newExpences)
-
 // ineed something code to update the user balance before vavigate to trans
 //====================================
          navigate('/transactions')
-
     }
     
     
-
     return (
         <form className="row g-3" onSubmit={handleSubmit}>
-
-
             <div className="col-8">
                 <label htmlFor="trans_name" className="form-label">transaction name</label>
                 <input 
@@ -92,9 +84,9 @@ let newExpences=userr.expences
                     <option  name='trans_type' value='withdrawl'>withdrawl</option>
                 </select>
                 <button type="submit" className="btn btn-danger" >add</button>
-<h3>balance = {userr.balance} $</h3>
+{/* <h3>balance = {userr.balance} $</h3>
 <h3>Total Income = {userr.income} $</h3>
-<h3>Total expences = {userr.expences}$</h3>
+<h3>Total expences = {userr.expences}$</h3> */}
             </div>
 
 
@@ -102,5 +94,4 @@ let newExpences=userr.expences
       
     );
 }
-
 export default CreateTransaction;

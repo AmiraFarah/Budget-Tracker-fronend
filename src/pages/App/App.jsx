@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import Nav from '../../components/Nav/Nav'
 import Show from '../../components/Show/Show'
 import Deleted from '../../components/Deleted/Deleted'
+import Signup from '../../components/Signup/Signup'
+import Datee from '../../components/Datee/Datee'
 
 
 //pages
@@ -16,6 +18,7 @@ import CreateTransaction from '../CreateTransaction/CreateTransaction';
 import * as userService from '../../utilities/users-service'
 //css
 import './App.css';
+import Welcome from '../../components/Welcome/Welcome';
 
 function App() {
   const [user, setUser] = useState('')
@@ -37,7 +40,9 @@ function App() {
         <Route path='/transactions/create' element={user && <CreateTransaction/>}/>
         <Route path='transactions/:id' element={user &&<Show/>}></Route>
      <Route path='/deleted' element = {user&& <Deleted/>}></Route>
-
+     <Route path='/signup' element={<Signup setUser={setUser}/>}></Route>
+     <Route path='/welcome' element={<Welcome/>}> </Route>
+ <Route path='/transactions/date' element={<Datee/>}> </Route>
       </Routes>
 
 

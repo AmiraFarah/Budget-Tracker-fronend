@@ -66,8 +66,7 @@ export const userOmg = async ()=>{
       newUser.balance = newB
       newUser.income = income
       newUser.expences=expences
-      const res  = await axios.put(BASE_URL+'/'+id,newUser)
-      // console.log(res.data, ' new user with new info ')
+      const res  = await axios.put(BASE_URL+'/'+ id,newUser)
 
        return res
       
@@ -86,3 +85,14 @@ export const userOmg = async ()=>{
 //      console.log(e) 
 //    }
 //  }
+
+export const signup = async (newUser)=>{
+try {
+   newUser.balance=0
+   newUser.income=0
+   newUser.expences=0
+   const res = await axios.post(BASE_URL+'/',newUser)
+ return res
+} catch (e) {
+   console.log(e)
+}}

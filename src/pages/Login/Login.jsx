@@ -26,7 +26,7 @@ try {
     if (user) {
         setUser( user)
 // redirect to transaction page after successfull login
-        navigate('/transactions')
+        navigate('/transactions',{state:user})
     } else { throw new Error}
     
 } catch (e) {
