@@ -46,6 +46,16 @@ export const logOut = ()=>{
    localStorage.removeItem('token')
    
 }
+export const anotherUser= async (iid)=>{
+   try {
+      const res = await axios.get(BASE_URL+'/'+iid)
+      return res
+
+   } catch (e) {
+      console.log(e)
+      
+   }
+} 
 
 export const userOmg = async ()=>{
    try {

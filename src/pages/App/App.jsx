@@ -6,6 +6,8 @@ import Show from '../../components/Show/Show'
 import Deleted from '../../components/Deleted/Deleted'
 import Signup from '../../components/Signup/Signup'
 import Datee from '../../components/Datee/Datee'
+import Success from '../../components/Success/Success';
+import LoginSuccess from '../../components/LoginSuccess/LoginSuccess'
 
 
 //pages
@@ -43,6 +45,8 @@ function App() {
      <Route path='/signup' element={<Signup setUser={setUser}/>}></Route>
      <Route path='/welcome' element={<Welcome/>}> </Route>
  <Route path='/transactions/date' element={<Datee/>}> </Route>
+ <Route path='transactions/success' element={<Success/>}></Route>
+ <Route path='/transactions/loginSuccess' element={<LoginSuccess/>}></Route>
       </Routes>
 
 

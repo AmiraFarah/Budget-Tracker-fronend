@@ -129,6 +129,11 @@ background-color: rgb(220,20,60);
   width:fit-content;
   background-color: rgb(78, 78, 176);
 }
+.success{
+  margin-top: 10%;
+  width: fit-content;
+  height: fit-content;
+}
 .img{
 height: 30%;
   width:30%;

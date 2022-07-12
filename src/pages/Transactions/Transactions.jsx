@@ -31,7 +31,6 @@ const Transactions = () => {
     })
     useEffect(() => {
         (async () => {
-
             const userN = await userOmg()
             setUser(userN.data)
         })()

@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import {useNavigate} from 'react-router-dom'
-import {login} from '../../utilities/users-service'
+import { useNavigate } from 'react-router-dom'
+import { login } from '../../utilities/users-service'
 
 
 const Login = ({ setUser }) => {
@@ -17,22 +17,24 @@ const Login = ({ setUser }) => {
     }
 
 
-    const handleSubmit =  async (e)=>{
+    const handleSubmit = async (e) => {
         e.preventDefault()
-try {
-    const user = await login(credentials)
-    // once we get our user back updATE our app.js
-    //user state woth the user's email or firstName
-    if (user) {
-        setUser( user)
-// redirect to transaction page after successfull login
-        navigate('/transactions',{state:user})
-    } else { throw new Error}
-    
-} catch (e) {
-    setMessage('Login failed try again')
-}
+        try {
+            const user = await login(credentials)
+            // once we get our user back updATE our app.js
+            //user state with the user's email or firstName
+            if (user) {
+                setUser(user)
+                // redirect to transaction page after successfull login
+                navigate('/transactions/loginSuccess',{state :user._id})
+            } else { throw new Error }
+
+        } catch (e) {
+            setMessage('Login failed try again')
+        }
     }
+    
+
     return (
 
 
@@ -49,7 +51,7 @@ try {
                         onChange={handleChange}
                         value={credentials.email}
                     />
-                <div id="emailHelp" className="form-text">{message}</div>
+                    <div id="emailHelp" className="form-text">{message}</div>
 
                 </div>
 
@@ -68,7 +70,7 @@ try {
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <button type="submit" className="btn btn-primary ">  Submit</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <button type="submit" className="btn btn-primary ">  Login</button>
             </form>
         </div>
 

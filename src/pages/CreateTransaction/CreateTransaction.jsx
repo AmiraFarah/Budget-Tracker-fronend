@@ -31,6 +31,8 @@ const CreateTransaction = () => {
             [e.target.name]: e.target.value
         })
     }
+    //===============================================
+    
    const handle =(e)=>{
 const d=e.target.value
 newTransaction.trans_type=d
@@ -49,9 +51,15 @@ let newExpences=userr.expences
          }
          newB = newIncome - newExpences
          userService.updateUserBalance(newB,newIncome,newExpences)
+
+        
+
 // ineed something code to update the user balance before vavigate to trans
 //====================================
-         navigate('/transactions')
+        // 3333 old navigate('/transactions')
+
+        //===========888888888888
+        navigate('/transactions/success')
     }
     
     
