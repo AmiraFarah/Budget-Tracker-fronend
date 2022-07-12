@@ -23,14 +23,15 @@ const Transactions = () => {
     }, [])
     //============================================= 
     const [userr, setUser] = useState({
-        income: 1,
-        expences: 1,
-        balance: 1
+        income: 300,
+        expences: 300,
+        balance: 300
         // add random values inorder to change the state so the useEffect will fire 
         // and get the user after update with new transaction  up moment 
     })
     useEffect(() => {
         (async () => {
+
             const userN = await userOmg()
             setUser(userN.data)
         })()
@@ -45,7 +46,7 @@ const data={
      data:[userr.balance,userr.income,userr.expences],
       backgroundColor: [
         'rgb(255,215,0)',
-        'rgb(75,0,130)',
+        'rgb(78, 78, 176)',
         'rgb(220,20,60)'
     ],
         hoverOffset:4,
@@ -61,7 +62,9 @@ const data={
     // let income_count=0
     // let expences_count=0
     return (
-        <div>             <h2>Transactions History</h2>
+        <div>        
+
+                 <h2>Transactions History</h2>
         <hr />
         <div className='main'>
             <div className='graph'>
@@ -70,15 +73,18 @@ const data={
              <hr />
              <ul>
                 <li>  <h4>Balance Available &#160;</h4></li>
-                <li> <h5 className='balance'>{userr.balance} <HiCurrencyDollar/></h5></li>
+                <li> <h5 className='balance'>{userr.balance}<HiCurrencyDollar/>   </h5></li>
              </ul>
              <ul>
-                <li> <h4>Total Expences&#160;</h4></li>
-                <li> <h5 className='expences'> {userr.expences} <HiCurrencyDollar/></h5></li>
+                <li> <h4> Expences&#160;&#160;&#160;</h4></li>
+                <li> <h5 className='expences'> {userr.expences} <HiCurrencyDollar/> &#160;&#160;&#160;&#160; { (userr.expences !== 0) ? Math.ceil((userr.expences*100)/(userr.income
+                +userr.expences)) : 0 }&#160;%</h5></li>
              </ul>
              <ul>
-                <li>   <h4>Total Income&#160;</h4>          </li>
-             <li><h5 className='income'> {userr.income} <HiCurrencyDollar/></h5></li>
+                <li>   <h4> Income&#160;&#160;&#160;</h4>          </li>
+             <li><h5 className='income'> {userr.income} <HiCurrencyDollar/>&#160;&#160;&#160;&#160;&#160;&#160;&#160; {(userr.income !== 0)? Math.floor((userr.income*100)/(userr.income
+                +userr.expences)
+            ) : 0}&#160;%</h5></li>
              </ul>
 
             </div>
@@ -89,10 +95,11 @@ const data={
                     transactions.map(transaction => (
 
                         <div className='trans'>
-                            <h5> {transaction.trans_type} </h5>
-                            <h5>{transaction.amount} $</h5>
-                            <h5>{transaction.trans_name} </h5>
-                            {console.log(transaction.amount,' amount')}
+                            {/* <h5> {transaction.trans_type} </h5> */}
+                           <ul className='tr'>
+                           <li> <h5>{transaction.amount} $ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</h5></li>
+                           <li>   <h5>{transaction.trans_name} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</h5></li> 
+                           </ul>
                            
                             <button onClick={() => navigate(`/transactions/${transaction._id}`, { state: transaction })}>show </button>
                             <button onClick={() => navigate('/deleted', { state: transaction })}> delete</button>
@@ -102,8 +109,8 @@ const data={
                     )
 
                     )}
-                <Link className="btn btn-success" to='/transactions/create'> Add Transactions</Link>
-<button className='btn btn-danger' onClick={()=>navigate('/transactions/date', {state:transactions})}> Show by date</button>
+                <Link className="btn btn-outline-primary" to='/transactions/create'> Add Transactions</Link>
+<button className='btn btn-outline-danger' onClick={()=>navigate('/transactions/date', {state:transactions})}> Show by date</button>
             </div>
 
         </div >
