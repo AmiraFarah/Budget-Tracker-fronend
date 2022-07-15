@@ -1,6 +1,6 @@
-
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { anotherUser } from '../../utilities/users-service';
 import * as userService from '../../utilities/users-service'
 
 
@@ -9,6 +9,7 @@ const LoginSuccess = (state) => {
     const navigate = useNavigate()
     const location = useLocation()
     const id=location.state
+   console.log(id,'comes from log in ')
     const [user,setUser] = useState({
       income:1,
       expences :1,
@@ -16,11 +17,11 @@ const LoginSuccess = (state) => {
     })
     useEffect(() => {
         (async () => {
-            const userN= await userService.anotherUser(id)
+            const userN= await anotherUser(id)
             setUser(userN.data)
             // console.log(userr,'user at first')
         })()
-    }, [])
+    }, [user])
     console.log(user,'another user')
     const handleSubmit = async ()=>{
 

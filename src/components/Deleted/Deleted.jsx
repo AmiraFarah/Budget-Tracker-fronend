@@ -7,8 +7,11 @@ import * as userService from '../../utilities/users-service'
 
 
 const Deleted = (state) => {
-    const [user, setUser] = useState({
 
+    const [user, setUser] = useState({
+income:0,
+balance:0,
+expences :0
     })
 
     //fetch the user data from user-service     

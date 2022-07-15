@@ -20,12 +20,12 @@ const Transactions = () => {
             const transactionsRes = await getTransactions()
             setTransactions(transactionsRes.data)
         })()
-    }, [])
+    }, [transactions])
     //============================================= 
     const [userr, setUser] = useState({
-        income: 300,
-        expences: 300,
-        balance: 300
+        income: 0,
+        expences: 0,
+        balance: 0
         // add random values inorder to change the state so the useEffect will fire 
         // and get the user after update with new transaction  up moment 
     })
@@ -34,7 +34,7 @@ const Transactions = () => {
             const userN = await userOmg()
             setUser(userN.data)
         })()
-    }, [])
+    }, [userr])
 //==================================
 //Chart Data
 
@@ -96,8 +96,9 @@ const data={
                         <div className='trans'>
                             {/* <h5> {transaction.trans_type} </h5> */}
                            <ul className='tr'>
-                           <li> <h5>{transaction.amount} $ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</h5></li>
+                           <li> <h5>{transaction.amount} $   &nbsp; &nbsp; &nbsp;</h5></li>
                            <li>   <h5>{transaction.trans_name} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</h5></li> 
+                           <li><h5>{transaction.trans_type}</h5></li>
                            </ul>
                            
                             <button onClick={() => navigate(`/transactions/${transaction._id}`, { state: transaction })}>show </button>

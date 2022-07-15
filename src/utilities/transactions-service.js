@@ -14,7 +14,7 @@ const setOptions =()=>{
  let iid = userService.getUserId() //user id to append with URL
 
 
-export const getTransactions = async (i) => {
+export const getTransactions = async () => {
 
   try {
 
